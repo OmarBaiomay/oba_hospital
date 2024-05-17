@@ -1,0 +1,10 @@
+.o_home_menu .o_apps .o_app:focus .o_app_icon, .o_home_menu .o_apps .o_app.o_focused .o_app_icon, .o_home_menu .o_apps .o_app:hover .o_app_icon{
+    box-shadow: unset !important;
+    filter: drop-shadow(0px 7px 4px rgba(0,0,0,0.5)) !important;
+    transform: translateY(-1px);
+}
+
+.o_form_view .o_horizontal_separator{
+    font-size: 18px;
+    colo: RED;
+}
