@@ -8,13 +8,14 @@ class Patient(models.Model):
     _description = 'Patient Management'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    ref = fields.Char(string="Reference", default="New", readonly=True)
-    name = fields.Char(string="Name")
-    age = fields.Integer(string="Age")
+    active = fields.Boolean(string="Active", default=True, tracking=True)
+    ref = fields.Char(string="Reference", default="New", readonly=True, tracking=True)
+    name = fields.Char(string="Name", required=True,tracking=True)
+    age = fields.Integer(string="Age", required=True,tracking=True)
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female'),
-    ], string="Gender")
+    ], string="Gender", required=True,tracking=True)
 
     @api.model
     def create(self, vals_list):

@@ -20,6 +20,7 @@
 				            <field name="name" string="Name"/>
 				            <field name="age" string="Age"/>
 				            <field name="gender" string="Gender"/>
+				            <field name="active" invisible="1"/>
 			            </group>
 		            </group>
 	            </sheet>
@@ -43,6 +44,7 @@
 	            <field name="name" string="Name"/>
 	            <field name="age" string="Age"/>
 	            <field name="gender" string="Gender"/>
+	            <field name="active" invisible="1"/>
             </tree>
         </field>
     </record>
@@ -59,18 +61,31 @@
 	            <field name="age" string="Age"/>
 	            <field name="gender" string="Gender"/>
 	            
-	            <filter name="Male Patients" domain="[('gender', '=', 'male')]"/>
-	            <filter name="Female Patients" domain="[('gender', '=', 'female')]"/>
+	            
+	            <filter name="male" string="Male Patients" domain="[('gender', '=', 'male')]"/>
+	            <filter name="female" string="Female Patients" domain="[('gender', '=', 'female')]"/>
+	            <filter name="kids" string="Kids Patients" domain="[('age', '&lt;=', 10)]"/>
+	            <filter name="active" string="Active Patients" domain="[('active', '=', True)]"/>
+	            <filter name="inactive" string="Inactive Patients" domain="[('active', '=', False)]"/>
+	            
+	            <group expand="0" string="Group By">
+		            <filter string="Gender" name="group_by_gender" context="{'group_by': 'gender'}"/>
+	            </group>
+	            
+	            <searchpanel>
+		            <field name="gender" enable_counters="1" icon="" select="multi"/>
+	            </searchpanel>
             </search>
         </field>
     </record>
 	
+	<!-- 	Action For All Patient -->
 	<record id="action_hospital_patient" model="ir.actions.act_window">
 		<field name="name">Patients</field>
 		<field name="type">ir.actions.act_window</field>
 		<field name="res_model">hospital.patient</field>
 		<field name="view_mode">tree,form</field>
-		<field name="context">{}</field>
+		<field name="context">{'search_default_active': 1}</field>
 		<field name="help" type="html">
 			<p class="o_view_nocontent_smiling_face">
 				Create Your First Patient!
@@ -78,9 +93,54 @@
 		</field>
 	</record>
 	
+	<!-- 	Menu For All Patient -->
 	<menuitem id="menu_all_patient"
 	          name="All Patients"
 	          action="action_hospital_patient"
 	          parent="menu_patient_master"
 	          sequence="0"/>
+	
+	<!-- 	Action For Female Patient Only -->
+	<record id="action_hospital_female_patient" model="ir.actions.act_window">
+		<field name="name">Female Patients</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">hospital.patient</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{'default_gender': 'female'}</field>
+		<field name="domain">[('gender', '=', 'female')]</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Create Your First Female Patient!
+			</p>
+		</field>
+	</record>
+	
+	<!-- 	Menu For Female Patient Only -->
+	<menuitem id="menu_female_patient"
+	          name="Female Patients"
+	          action="action_hospital_female_patient"
+	          parent="menu_patient_master"
+	          sequence="1"/>
+	
+	<!-- 	Action For Male Patient Only -->
+	<record id="action_hospital_male_patient" model="ir.actions.act_window">
+		<field name="name">Male Patients</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">hospital.patient</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{'default_gender': 'male'}</field>
+		<field name="domain">[('gender', '=', 'male')]</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Create Your First Male Patient!
+			</p>
+		</field>
+	</record>
+	
+<!-- 	Menu For Male Patient Only -->
+	<menuitem id="menu_male_patient"
+	          name="Male Patients"
+	          action="action_hospital_male_patient"
+	          parent="menu_patient_master"
+	          sequence="2"/>
 </odoo>

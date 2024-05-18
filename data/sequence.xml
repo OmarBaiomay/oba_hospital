@@ -7,4 +7,13 @@
 			<field name="padding">5</field>
 		</record>
 	</data>
+	
+	<data>
+		<record id="appointment_sequence" model="ir.sequence">
+			<field name="name">Patient Appointment Seq.</field>
+			<field name="code">appointment_sequence</field>
+			<field name="prefix">PA</field>
+			<field name="padding">5</field>
+		</record>
+	</data>
 </odoo>

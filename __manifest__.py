@@ -28,6 +28,7 @@
         'data/sequence.xml',
         'views/menus.xml',
         'views/patient_view.xml',
+        'views/appointment_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
@@ -36,13 +37,15 @@
 
     'assets': {
         'web.assets_frontend': [
-            'oba_hospital/static/src/css/**',
-            'oba_hospital/static/src/js/**',
+            'oba_hospital/static/src/front-end/css/**',
+            'oba_hospital/static/src/front-end/js/**',
         ],
         'web.assets_backend': [
-            'oba_hospital/static/src/css/**',
-            'oba_hospital/static/src/js/**',
+            'oba_hospital/static/src/back-end/css/**',
+            'oba_hospital/static/src/back-end/js/**',
         ],
     },
+
+    'license': 'LGPL-3',
 }
 

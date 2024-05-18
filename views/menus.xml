@@ -8,6 +8,7 @@
 		          sequence="0"/>
 		
 		<menuitem id="menu_patient_master" name="Patients" parent="oba_hospital_menu_root" sequence="0"/>
+		<menuitem id="menu_appointment_master" name="Appointments" parent="oba_hospital_menu_root" sequence="1"/>
 		
 	</data>
 </odoo>
