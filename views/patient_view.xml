@@ -23,6 +23,9 @@
 				            <field name="gender" string="Gender"/>
 				            <field name="active" invisible="1"/>
 			            </group>
+			            <group string="More Details">
+				            <field name="tags_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+			            </group>
 		            </group>
 	            </sheet>
 	            

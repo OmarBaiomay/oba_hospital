@@ -10,3 +10,4 @@ class Patient(models.Model):
 
     active = fields.Boolean(string="Active", default=True, tracking=True)
     name = fields.Char(string="Name", required=True, tracking=True)
+    color = fields.Integer(string="Color", tracking=True)

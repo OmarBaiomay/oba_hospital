@@ -17,6 +17,7 @@ class Patient(models.Model):
         ('female', 'Female'),
     ], string="Gender", required=True,tracking=True)
     image = fields.Image(string="Image", tracking=True)
+    tags_ids = fields.Many2many('hospital.patient.tags', string="Tags", tracking=True)
 
     @api.model
     def create(self, vals_list):
