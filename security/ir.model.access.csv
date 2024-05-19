@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 oba_hospital.access_hospital_patient,access_hospital_patient,oba_hospital.model_hospital_patient,base.group_user,1,1,1,1
+oba_hospital.access_hospital_patient_tags,access_hospital_patient_tags,oba_hospital.model_hospital_patient_tags,base.group_user,1,1,1,1
 oba_hospital.access_hospital_patient_appointment,access_hospital_patient_appointment,oba_hospital.model_hospital_patient_appointment,base.group_user,1,1,1,1
+oba_hospital.access_appointment_pharmacy_lines,access_appointment_pharmacy_lines,oba_hospital.model_appointment_pharmacy_lines,base.group_user,1,1,1,1

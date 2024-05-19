@@ -7,7 +7,20 @@
         <field name="arch" type="xml">
             <form string="Patients">
 	            <header>
-		           <field name="state" widget="statusbar" nolabel="1" options="{'clickable': '1'}"/>
+		            <button name="action_in_consultation" string="In Consultation" type="object"
+		                    class="oe_highlight" confirm="Make This Appointment in Consultation?" states="draft"
+		                    data-hotkey="i"/>
+		            
+		            <button name="action_done" string="Mark as Done" type="object" class="oe_highlight"
+		                    confirm="Mark This Appointment as Done" states="in_consultation" data-hotkey="d"/>
+		            
+		            <button name="action_cancel" string="Cancel" type="object" class="oe_highlight"
+		                    confirm="Cancel This Appointment" states="draft" data-hotkey="c"/>
+		            
+		            <button name="action_draft" string="Reset To Draft" type="object" class="oe_highlight"
+		                    confirm="Reset This Appointment to Draft" states="done,canceled" data-hotkey="r"/>
+		            
+		           <field name="state" widget="statusbar" nolabel="1"/>
 	            </header>
 	            <sheet>
 		            <div class="oe_title">
@@ -24,7 +37,8 @@
 	                        <field name="doctor_id" widget="many2one_avatar"/>
 	                        <field name="priority" widget="priority"/>
 				            <button name="action_make_it_normal" string="Normal" type="object"
-				                    class="oe_highlight mb-3" confirm="Make This Appointment Priority Normal"/>
+				                    class="oe_highlight mb-3" confirm="Make This Appointment Priority Normal"
+				                    attrs="{'invisible': [('priority', '=', '0')]}"/>
                             <field name="appointment_date"/>
 			            </group>
 		            </group>
@@ -34,7 +48,13 @@
 				           <field name="prescription" placeholder="Enter Patient Prescription"/>
 			            </page>
 			            <page name="pharmacy" string="Pharmacy">
-<!-- 				           <field name="prescription" placeholder="Enter Patient Prescription"/> -->
+				            <field name="pharmacy_line_ids">
+					            <tree editable="bottom">
+						            <field name="product_id"/>
+						            <field name="price_unit" widget="monetary"/>
+						            <field name="qty"/>
+					            </tree>
+				            </field>
 			            </page>
 		            </notebook>
 	            </sheet>
@@ -53,7 +73,8 @@
         <field name="name">hospital.patient.tree</field>
         <field name="model">hospital.patient_appointment</field>
         <field name="arch" type="xml">
-            <tree decoration-success="state == 'done'" decoration-danger="state == 'canceled'"
+            <tree sample="1"
+		          decoration-success="state == 'done'" decoration-danger="state == 'canceled'"
                   decoration-info="state == 'draft'" decoration-warning="state == 'in_consultation'" >
 	            <field name="ref"/>
 	            <field name="patient_id"/>

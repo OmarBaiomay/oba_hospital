@@ -16,6 +16,7 @@ class Patient(models.Model):
         ('male', 'Male'),
         ('female', 'Female'),
     ], string="Gender", required=True,tracking=True)
+    image = fields.Image(string="Image", tracking=True)
 
     @api.model
     def create(self, vals_list):

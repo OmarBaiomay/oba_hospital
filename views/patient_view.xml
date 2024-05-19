@@ -10,14 +10,15 @@
 		           
 	            </header>
 	            <sheet>
+		            <field name="image" widget="image" class="oe_avatar"/>
 		            <div class="oe_title">
 			            <h1>
-			                <field name="ref"/>
+			                <field name="name"/>
 			            </h1>
 		            </div>
 		            <group>
 			            <group string="Patient Details">
-				            <field name="name" string="Name"/>
+				            <field name="ref" string="Reference"/>
 				            <field name="age" string="Age"/>
 				            <field name="gender" string="Gender"/>
 				            <field name="active" invisible="1"/>
@@ -39,7 +40,7 @@
         <field name="name">hospital.patient.tree</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <tree string="Patients">
+            <tree sample="1">
 	            <field name="ref" string="Reference"/>
 	            <field name="name" string="Name"/>
 	            <field name="age" string="Age"/>
